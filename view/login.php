@@ -51,7 +51,8 @@
 
         </style>
         <div class="ideasplusTitle">
-             <span>IDEAS ++</span>
+            <a href="./login.html">  <span>IDEAS PLUS</span><span>+</span> </a>
+            <p>Por BrianiacDevelopers</p>
         </div>
         
         
@@ -82,7 +83,7 @@
                           </div>
                           
                           <div>
-                              ¿No tienes usuario? haz click <a href="./UsuarioRegistro.php">aquí</a>
+                              ¿No tienes usuario? haz click <a href="./signup.php">aquí</a>
                           </div>
                         </fieldset>
                      </form>
