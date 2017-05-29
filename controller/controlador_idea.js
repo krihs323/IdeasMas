@@ -47,7 +47,7 @@ var app = angular.module("myapp",[]);
       }
 
       $scope.displayData = function(){
-           $http.get("../model/crud_idea.php?data=0")
+           $http.get("../model/crud_idea.php?data=1")
            .success(function(data){
                 $scope.areas = data;
            });
