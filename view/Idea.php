@@ -19,6 +19,11 @@
                      <input type="text" name="tituloIdea" ng-model="tituloIdea" class="form-control" />
                      <br /> <br />
                      <label>Área de interés</label>
+
+                     <select ng-model="miProvinciaSeleccionada" ng-options="provincia as provincia.nombre for provincia in provincias track by provincia.idProvincia" >
+                        <option value="">--Elige opcion--</option>
+                      </select>
+                     
                      <select ng-model="areainteresIdea" ng-options="idx as area for (idx, area) in areas" class="form-control">
                      </select>
                      <br />

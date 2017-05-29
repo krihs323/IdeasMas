@@ -46,10 +46,11 @@ include('conexion.php');
       if($btn_name == 'deleteData')  
       {  
            $id = $data->id;  
-           $query = "DELETE FROM tb_rol WHERE ID_ROL = '$id'";  
+           $query = "DELETE FROM tb_idea WHERE ID_IDEA = '$id'";  
            if(mysqli_query($connect, $query))  
            {  
                 echo 'Data DELETE...';  
+                //echo $query;  
            }  
            else  
            {  
@@ -59,16 +60,53 @@ include('conexion.php');
       }
  } 
 
- $output = array();  
- $query = "SELECT NOMBRE FROM tb_area_interes order by ID_AREAINTERES";  
- $result = mysqli_query($connect, $query);  
- if(mysqli_num_rows($result) > 0)  
- {
-     while ($row = $result->fetch_assoc()) {
-        $output[] = $row['NOMBRE']; 
-     }
-     echo json_encode($output);  
- } 
+
+
+if(isset($_GET["data"])){
+  $variable = $_GET["data"];
+}else{
+  $variable = 0;
+}
+
+if ($variable==0){ 
+   $output = array();  
+    //$query = "SELECT NOMBRE FROM tb_area_interes order by ID_AREAINTERES";  
+   $query = "SELECT ID_IDEA, TITULO, DESCRIPCION FROM tb_idea order by ID_IDEA;";  
+   $result = mysqli_query($connect, $query);  
+   if(mysqli_num_rows($result) > 0)  
+   {  
+        while($row = mysqli_fetch_array($result))  
+        {  
+             $output[] = $row;  
+        }  
+        echo json_encode($output);  
+        unset ($output);
+   } 
+}
+
+
+
+
+if ($variable == 1){
+  $output2 = array();  
+    //$query = "SELECT NOMBRE FROM tb_area_interes order by ID_AREAINTERES";  
+   $query = "SELECT NOMBRE FROM tb_area_interes order by ID_AREAINTERES";  
+   $result = mysqli_query($connect, $query);  
+   if(mysqli_num_rows($result) > 0)  
+   {  
+        while($row = mysqli_fetch_array($result))  
+        {  
+             $output2[] = $row;  
+        }  
+        echo json_encode($output2);  
+        unset ($output2);
+   } 
+}
+
+
+
+
+
 
 
  ?>  

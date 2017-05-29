@@ -47,13 +47,26 @@ var app = angular.module("myapp",[]);
       }
 
       $scope.displayData = function(){
-           $http.get("../model/crud_idea.php")
+           $http.get("../model/crud_idea.php?data=0")
            .success(function(data){
                 $scope.areas = data;
            });
 
           $scope.estadosprivados = ['Público','Privado'];
       }
+      
+      /*
+      * Funcion para realizar el listado de datos
+      */
+      
+      $scope.displayData = function(){  
+           $http.get("../model/crud_idea.php?data=0")  
+           .success(function(data){  
+                $scope.names = data;  
+           });  
+      }
+      
+     
 
 
       /*$scope.updateData = function(id, nombreRol){  s
@@ -70,4 +83,42 @@ var app = angular.module("myapp",[]);
                $scope.displayData();
            });
       } */
+
+/*
+  $scope.provincias=[
+    {
+      idProvincia:2,
+      nombre:"Castellón"
+    },
+    {
+      idProvincia:3,
+      nombre:"Alicante"
+    },
+    {
+      idProvincia:1,
+      nombre:"Valencia"
+    },
+    {
+      idProvincia:7,
+      nombre:"Teruel"
+    },  
+    {
+      idProvincia:5,
+      nombre:"Tarragona"
+    }
+  ];
+     
+  $scope.miProvinciaSeleccionada=null*/
+ 
+ 
+  $scope.miProvinciaSeleccionada = function(){  
+           $http.get("../model/crud_idea.php?data=1")  
+           .success(function(data){  
+               // $scope.names = data;  
+               alert(data);
+           });  
+      }
+
+
+
  });
