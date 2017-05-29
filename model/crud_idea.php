@@ -23,7 +23,8 @@ include('conexion.php');
            }  
            else  
            {  
-                echo 'Error ha fallado la inserción la idea: ' . $tituloIdea;  
+                //echo 'Error ha fallado la inserción la idea: ' . $tituloIdea;  
+                echo $query;  
            }
           return;
       }  
