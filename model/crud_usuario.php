@@ -5,6 +5,7 @@
 include('conexion.php');
 
 
+
 if(count($data) > 0)  
  {  
 
@@ -27,7 +28,7 @@ if(count($data) > 0)
          $query = "INSERT INTO tb_usuario(NOMBRE, APELLIDO, DOCUMENTO, TIPO_DOCUMENTO, ID_ROL, GENERO, FECHA_NACIMIENTO, ID_ESTADO, TELEFONO, CELULAR, CORREO, CONTRASENA) VALUES ('$nombreUsuario', '$apellidoUsuario', '$documentoUsuario', '$tipoDocumentoUsuario', '$idRolUsuario', '$generoUsuario', '$fechaNacimientoUsuario', 1, '$telefonoUsuario', '$celularUsuario', '$correoUsuario','$contrasenaUsuario')";  
            if(mysqli_query($connect, $query))  
            {  
-                echo "Data Inserted...";  
+                echo "Registro con éxito. Ingresa a tu cuenta.";  
            }  
            else  
            {  
@@ -48,6 +49,12 @@ if(count($data) > 0)
            {  
                 echo 'Error';  
            } 
+          return;
+      }  
+         if($btn_name == 'Cerrar')  
+      {  
+       session_start();
+            session_destroy();
           return;
       }  
       if($btn_name == 'deleteData')  
@@ -78,7 +85,10 @@ if(count($data) > 0)
            } 
           return;
       }
- } 
+     
+ }
+
+
 
  $output = array();  
  $query = "SELECT * FROM tb_usuario";  

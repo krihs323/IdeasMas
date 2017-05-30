@@ -5,6 +5,7 @@ var app = angular.module("myapp",[]);
       */
       $scope.btnName = "REGISTRAR";  
       $scope.insertData = function(){  
+      
            if($scope.nombreUsuario == null)  
            {  
                 alert("Nombre usuario es requerido");  
@@ -29,6 +30,7 @@ var app = angular.module("myapp",[]);
                      }  
                 ).success(function(data){  
                      alert(data);  
+                     window.location.href = "./www.php";
                      $scope.nombreUsuario = null;  
                     
                      $scope.btnName = "REGISTRAR";  
@@ -36,15 +38,27 @@ var app = angular.module("myapp",[]);
                 });  
            }  
       }  
+        /*
+      * Funcion para cerrar sesión usuario.
+      */
+     $scope.cerrarSesion = function(){  
+           // alert("hola papu");
+             $scope.btnName = "Cerrar";   
+             $http.post("../model/crud_usuario.php", {'btnName':$scope.btnName}).success(function(data){ 
+               alert("Sesión finalizada.");
+                  window.location.href = "login.php";
+           });
+      }
       /*
       * Funcion para realizar el listado de datos
       */
       $scope.displayData = function(){  
            $http.get("../model/crud_usuario.php")  
            .success(function(data){  
+            
                 $scope.names = data;  
            });  
-      }  
+      }       
       /*
       * Funcion para realizar la actualizacion de datos
       */
@@ -54,6 +68,7 @@ var app = angular.module("myapp",[]);
            
            $scope.btnName = "Update";  
       }  
+      
       /*
       * Funcion para realizar la eliminacion de datos
       */

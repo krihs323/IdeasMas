@@ -1,18 +1,25 @@
 var app = angular.module("myapp",[]);
+var areaId;
+  var usuarioID;
+$(document).ready(function(){
+usuarioID= $('#userCrea').val(); 
+   
+});
+
 
  app.controller("ideacontroller", function($scope, $http){
 
-     $scope.btnName = "ADD";
+     $scope.btnName = "Publicar";
 
      $scope.insertData = function(){
-
+       
            if($scope.tituloIdea == null)
            {
                alert("El titulo de la idea es requerido");
                return;
            }
 
-         if($scope.areainteresIdea == null)
+         if(areaId == null)
            {
                alert("debe elegir un area de interes");
                return;
@@ -27,10 +34,12 @@ var app = angular.module("myapp",[]);
          $http.post(
                      "../model/crud_idea.php",
                      {
+                       
                         'tituloIdea':$scope.tituloIdea,
-                        'areainteresIdea':$scope.areainteresIdea,
+                        'areainteresIdea':areaId,
                         'descripcionIdea':$scope.descripcionIdea.trim(),
                         'privadoIdea':$scope.privadoIdea,
+                         'idUsuarioCrea':usuarioID,
                         'btnName':$scope.btnName
                      }
                 ).success(function(data){
@@ -42,32 +51,35 @@ var app = angular.module("myapp",[]);
                      $scope.privadoIdea = null;
                      $scope.btnName = null;
 
-                     $scope.btnName = "ADD";
+                     $scope.btnName = "Publicar";
+                $scope.displayIdea();  
                 });
       }
 
       $scope.displayData = function(){
-           $http.get("../model/crud_idea.php?data=1")
+           $http.get("../model/crud_idea.php")
            .success(function(data){
                 $scope.areas = data;
            });
 
-          $scope.estadosprivados = ['Público','Privado'];
+                                                        
       }
       
-      /*
-      * Funcion para realizar el listado de datos
-      */
-      
-      $scope.displayData = function(){  
-           $http.get("../model/crud_idea.php?data=0")  
-           .success(function(data){  
-                $scope.names = data;  
-           });  
-      }
-      
-     
+          $scope.displayIdea = function(){
+           $http.get("../model/crud_publicaciones.php")
+           .success(function(data){
+                $scope.ideas = data;
+           });
 
+                                                        
+      }
+      
+  
+    $scope.mostrar = function(id, nombreRol){  
+       areaId=id;
+    
+      } 
+       
 
       /*$scope.updateData = function(id, nombreRol){  s
            $scope.id = id;
@@ -83,42 +95,4 @@ var app = angular.module("myapp",[]);
                $scope.displayData();
            });
       } */
-
-/*
-  $scope.provincias=[
-    {
-      idProvincia:2,
-      nombre:"Castellón"
-    },
-    {
-      idProvincia:3,
-      nombre:"Alicante"
-    },
-    {
-      idProvincia:1,
-      nombre:"Valencia"
-    },
-    {
-      idProvincia:7,
-      nombre:"Teruel"
-    },  
-    {
-      idProvincia:5,
-      nombre:"Tarragona"
-    }
-  ];
-     
-  $scope.miProvinciaSeleccionada=null*/
- 
- 
-  $scope.miProvinciaSeleccionada = function(){  
-           $http.get("../model/crud_idea.php?data=1")  
-           .success(function(data){  
-               // $scope.names = data;  
-               alert(data);
-           });  
-      }
-
-
-
  });

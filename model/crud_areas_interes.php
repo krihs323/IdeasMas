@@ -13,7 +13,7 @@ include('conexion.php');
          
  
       $btn_name = $data->btnName;  
-      if($btn_name == "ADD")  
+      if($btn_name == "Registrar")  
       { 
        
            $nombreArea = mysqli_real_escape_string($connect, $data->nombreArea);  
@@ -21,7 +21,7 @@ include('conexion.php');
            $query = "INSERT INTO tb_area_interes(NOMBRE,DESCRIPCION) VALUES ('$nombreArea','$descripcionArea')";  
            if(mysqli_query($connect, $query))  
            {  
-                echo "Data Inserted...";  
+                echo "Área de interés, registrada.";  
            }  
            else  
            {  
@@ -29,7 +29,7 @@ include('conexion.php');
            }
           return;
       }  
-      if($btn_name == 'Update')  
+      if($btn_name == 'Actualizar')  
       {  
            $nombreArea = mysqli_real_escape_string($connect, $data->nombreArea);
             $descripcionArea = mysqli_real_escape_string($connect, $data->descripcionArea);     
@@ -37,7 +37,7 @@ include('conexion.php');
            $query = "UPDATE tb_area_interes SET NOMBRE = '$nombreArea', DESCRIPCION='$descripcionArea' WHERE ID_AREAINTERES = '$id'";  
            if(mysqli_query($connect, $query))  
            {  
-                echo 'Data Updated...';  
+                echo 'Actualizado con éxito.';  
            }  
            else  
            {  
@@ -51,7 +51,7 @@ include('conexion.php');
            $query = "DELETE FROM tb_area_interes WHERE ID_AREAINTERES = '$id'";  
            if(mysqli_query($connect, $query))  
            {  
-                echo 'Data DELETE...';  
+                echo 'Área eliminada.';  
            }  
            else  
            {  

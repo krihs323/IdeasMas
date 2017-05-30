@@ -1,6 +1,6 @@
 var app = angular.module("myapp",[]);  
  app.controller("usercontroller", function($scope, $http){  
-      $scope.btnName = "ADD";  
+      $scope.btnName = "Registrar";  
       $scope.insertData = function(){  
            if($scope.nombreArea == null)  
            {  
@@ -37,7 +37,7 @@ var app = angular.module("myapp",[]);
            $scope.nombreArea = nombreArea;
            $scope.descripcionArea = descripcionArea;
            
-           $scope.btnName = "Update";  
+           $scope.btnName = "Actualizar";  
       }  
        $scope.deleteData = function(id){  
            $scope.btnName = "deleteData"; 

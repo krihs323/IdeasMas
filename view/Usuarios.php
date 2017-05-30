@@ -18,11 +18,11 @@
                      <!--
                      <label>Nombre Usuario</label>  
                      <input type="text" name="nombreUsuario" ng-model="nombreUsuario" class="form-control" />  
-                     <br />  
-                     -->
-                     
-                     <input type="hidden" ng-model="id" />  
-                     <input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="{{btnName}}"/>  
+                         <br />  
+                         -->
+
+                         <input type="hidden" ng-model="id" />  
+                         <input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="{{btnName}}"/>  
                      <br /><br />  
                      <table class="table table-bordered">  
                           <tr>  

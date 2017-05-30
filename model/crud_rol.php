@@ -13,42 +13,42 @@ include('conexion.php');
          
  
       $btn_name = $data->btnName;  
-      if($btn_name == "ADD")  
+      if($btn_name == "Agregar")  
       { 
            $nombreRol = mysqli_real_escape_string($connect, $data->nombreRol);   
-           $query = "INSERT INTO tb_rol(NOMBRE) VALUES ('$nombreRol')";  
+           $query = "INSERT INTO tb_rol(NOMBRE_ROL) VALUES ('$nombreRol')";  
            if(mysqli_query($connect, $query))  
            {  
-                echo "Data Inserted...";  
+                echo '1';  
            }  
            else  
            {  
-                echo 'Error';  
+                echo '0';  
            }
           return;
       }  
-      if($btn_name == 'Update')  
+      if($btn_name == 'Actualizar')  
       {  
            $nombreRol = mysqli_real_escape_string($connect, $data->nombreRol);   
            $id = $data->id;  
            $query = "UPDATE tb_rol SET NOMBRE = '$nombreRol' WHERE ID_ROL = '$id'";  
            if(mysqli_query($connect, $query))  
            {  
-                echo 'Data Updated...';  
+                echo "2";  
            }  
            else  
            {  
-                echo 'Error';  
+                echo '0';  
            } 
           return;
       }  
-      if($btn_name == 'deleteData')  
+      if($btn_name == 'Eliminar')  
       {  
            $id = $data->id;  
            $query = "DELETE FROM tb_rol WHERE ID_ROL = '$id'";  
            if(mysqli_query($connect, $query))  
            {  
-                echo 'Data DELETE...';  
+                echo 'Rol eliminado.';  
            }  
            else  
            {  

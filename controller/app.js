@@ -1,5 +1,5 @@
 
-var angularTodo = angular.module('login', []);
+var angularTodo = angular.module('myapp', []);
 function controllerForm($scope, $http) {
       $scope.r
       $scope.alertaLoginCorrecto = true;
@@ -24,19 +24,26 @@ function controllerForm($scope, $http) {
        
     $http.post('../model/index.php',{ usuario : $scope.txtUsuario , contrasena : $scope.txtContrasena })
         .success(function(data) {
-       
+    
            // si no existe el usuario nos muestre un alerta de error
-           if (typeof(data)=='string'){
+           if (data==0){
              $scope.alertaLoginError = false;   
              $scope.alertaLoginCorrecto = true;   
              $scope.txtUsuario    = '';
              $scope.txtContrasena = '';   
-           }else{
-               window.location.href = "./vista_area_interes.php";
+           }else if(data==1){
+              
+            window.location.href = "./index.php";
              // si existe ya la hicimos y que nos ponga un mensaje de bienvenida
              $scope.rsJSON = data.usuario;
              $scope.alertaLoginCorrecto = false;            
              $scope.alertaLoginError = true;   
+           }else if(data==2){
+                window.location.href = "./indexSecond.php";
+             // si existe ya la hicimos y que nos ponga un mensaje de bienvenida
+             $scope.rsJSON = data.usuario;
+             $scope.alertaLoginCorrecto = false;            
+             $scope.alertaLoginError = true; 
            }
         })
         .error(function(data) {
@@ -44,4 +51,5 @@ function controllerForm($scope, $http) {
         });   
         
   }
+
 
